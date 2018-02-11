@@ -10,8 +10,15 @@ def eight_ball
         puts @answers
         eight_ball
     elsif question == "reset"
-        @answers.delete_at(7)
+        @answers.slice!(7..99)
+        puts " "
         puts @answers
+        eight_ball
+    elsif question == "will i find love?"
+        puts " "
+        puts "You should check out Match.com or Tinder. I hear that works."
+        puts " "
+        eight_ball
     end
     # love_array << question
     # love_array.split(' ')
