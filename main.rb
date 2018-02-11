@@ -1,23 +1,17 @@
 
-
-# - do not let them add the same answer if the eight ball already has that answer
-# - ability to reset answers back to the original bank (hint: think arr.clone)
-# - via easter egg question ("reset_answers")
-
-# - Make Print function cleaner
 require 'Pry'
 @answers = ["Sure Thang", "Not a Chance", "No Go", "I'll look into it", "Aww that's cute", "You Got This", "That's it"]
-@new_answers = @answers.clone
+
 def eight_ball
     puts "Please enter a question for our Magic Eightball to answer."
     # love_array = []
-    question = gets.strip
+    question = gets.strip.downcase
     if question == "print"
         puts @answers
-        exit 
+        eight_ball
     elsif question == "reset"
-        @new_answers.delete_at(7)
-        puts @new_answers
+        @answers.delete_at(7)
+        puts @answers
     end
     # love_array << question
     # love_array.split(' ')
@@ -25,7 +19,9 @@ def eight_ball
     #     puts "Try Match.com"
     # else
     puts @answers.sample
+    puts " "
     puts "Dou want to exit?"
+    puts " "
     puts "y or n"
     quit = gets.strip
     case quit
@@ -35,13 +31,18 @@ def eight_ball
     when "n"
         eight_ball
     else 
-       puts "Add an answer to the magic 8-Ball"
+       puts " "
+        puts "Add an answer to the magic 8-Ball"
 
-        add_answer = gets.to_s
-        @answers << add_answer
-        # if add_answer == @answers [1..100]
-        #     puts "We already have that answer. Please try again:"
-            
+        add_answer = gets.strip
+        if @answers.include?(add_answer)
+            puts "I'm sorry, that's already in the bank. Please try to add another answer:"
+            puts "Add an answer to the magic 8-ball"
+            try_again = gets.strip
+        else
+            @answers << add_answer
+        end
+        
     end
      
 end
