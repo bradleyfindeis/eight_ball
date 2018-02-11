@@ -4,7 +4,7 @@ require 'Pry'
 
 def eight_ball
     puts "Please enter a question for our Magic Eightball to answer."
-    # love_array = []
+   
     question = gets.strip.downcase
     if question == "print"
         puts @answers
@@ -20,11 +20,7 @@ def eight_ball
         puts " "
         eight_ball
     end
-    # love_array << question
-    # love_array.split(' ')
-    # if love_array == "love"
-    #     puts "Try Match.com"
-    # else
+   
     puts @answers.sample
     puts " "
     puts "Dou want to exit?"
